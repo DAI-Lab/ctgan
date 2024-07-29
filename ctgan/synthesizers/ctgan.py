@@ -39,7 +39,7 @@ class Discriminator(Module):
         interpolates = alpha * real_data + ((1 - alpha) * fake_data)
 
         disc_interpolates = self(interpolates)
-
+        self.set_device(device)
         gradients = torch.autograd.grad(
             outputs=disc_interpolates,
             inputs=interpolates,
